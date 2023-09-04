@@ -1,0 +1,10 @@
+.everyTable{
+    position: relative;
+    background-color: #c1c0b9;
+    height: auto;
+    padding: 8px 8px;
+}
+
+#allTheTableName { 
+    padding: 8px 8px 16px 8px;
+}
