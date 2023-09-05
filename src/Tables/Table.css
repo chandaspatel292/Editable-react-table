@@ -1,0 +1,39 @@
+.table-div{
+    position: relative;
+    background-color: #FFFFFF;
+    height: auto;
+    padding: 0px 8px 16px 8px;
+    overflow-x: auto;
+}
+
+
+
+.column-name {
+    display: flex; 
+    width: fit-content;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: rgb(235, 235, 235);
+    padding: 1px;
+    border-radius: 1%;
+  }
+  
+  
+  .column-text {
+    color: black;
+    max-width: 20vw;
+    font-weight: 550;
+  }
+  
+  /* Left-align the first column name */
+.left-align {
+  text-align: left;
+}
+
+/* Right-align the last column name */
+.right-align {
+  text-align: right;
+}
+.center-align {
+  text-align: center;
+}

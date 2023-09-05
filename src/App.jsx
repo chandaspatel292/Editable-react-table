@@ -15,8 +15,8 @@ const App = () => {
         <input
           id="wholePageName"
           type="text"
-          value={pageTitle}
-          onChange={handleTitleChange}
+          defaultValue={pageTitle}
+          onBlur={handleTitleChange}
           style={{
             color: pageTitle === "Untitled" ? "grey" : "black",
             border: "none",

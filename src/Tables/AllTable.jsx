@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './AllTable.css';
-import Tables from "./Tables";
+import Table from "./Table";
 
 const AllTable = () => {
 
@@ -15,8 +15,8 @@ const AllTable = () => {
             <input
                 id="allTheTableName"
                 type="text"
-                value={AllTableName}
-                onChange={handleAllTableNameChange}
+                defaultValue={AllTableName}
+                onBlur={handleAllTableNameChange}
                 style={{
                     backgroundColor: "inherit",
                     color: AllTableName === "Untitled" ? "grey" : "black",
@@ -27,7 +27,9 @@ const AllTable = () => {
                     fontWeight: "bold",
                 }}
             />
-            <Tables />
+            <div className="table-space">
+                <Table />
+            </div>
         </div>
     )
 
