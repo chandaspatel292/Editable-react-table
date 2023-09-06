@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Table.css";
-//import Rows from "./Rows";
+import Rows from "./Rows";
 
 function ColumnNames(columns) {
   const names = [];
@@ -20,7 +20,7 @@ const Table = () => {
     const newColumnNames = [...columnName];
     newColumnNames[index] = e.target.value;
     setColumnName(newColumnNames);
-    console.table(newColumnNames);
+    console.log(newColumnNames);
   };
 
   const columnNameInputs = columnName.map((name, index) => (
@@ -62,7 +62,7 @@ const Table = () => {
       <div className="whole-table" style={{ overflow: "auto" }}>
         <div className="column-name">{columnNameInputs}</div>
       </div>
-
+        <Rows />
     </div>
   );
 };

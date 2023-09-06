@@ -1,0 +1,52 @@
+
+#add-row-button {
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #plus-icon {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    
+  }
+  
+  
+  /* Style for table cells */
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    align-content: center;
+  }
+
+  tr{
+    border-radius: 5px;
+  }
+
+/* Highlighted row border */
+tr.highlight {
+  border: 2px solid lightblue;
+}
+
+/* Highlighted row border when editing a cell */
+tr.editing {
+  border: 2px solid rgb(125, 178, 196);
+}
+
+
+  
+
+  
+  
