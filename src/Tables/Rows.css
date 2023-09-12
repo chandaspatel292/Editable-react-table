@@ -42,7 +42,7 @@ tr.highlight {
 
 /* Highlighted row border when editing a cell */
 tr.editing {
-  border: 2px solid rgb(125, 178, 196);
+  border: 2px solid rgb(84, 136, 153);
 }
 
 
