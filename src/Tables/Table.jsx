@@ -39,6 +39,7 @@ const Table = () => {
     setColumnName(afterDelete);
     const newColumnsCount = columns - 1;
     setColumns(newColumnsCount);
+    console.log(afterDelete)
   };
 
   const [AllTableName, setAllTableName] = useState("Untitled");
