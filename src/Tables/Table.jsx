@@ -1,3 +1,4 @@
+//Table.jsx
 import { useState } from "react";
 import "./Table.css";
 import Rows from "./Rows";
@@ -15,12 +16,27 @@ const Table = () => {
   const [columns, setColumns] = useState(4);
   const [columnName, setColumnName] = useState(ColumnNames(columns));
 
-
   const handleBlur = (e, index) => {
     const newColumnNames = [...columnName];
     newColumnNames[index] = e.target.value;
     setColumnName(newColumnNames);
     console.log(newColumnNames);
+  };
+
+  const addColumns = () => {
+    // Increase the number of columns by 1
+    const newColumnsCount = columns + 1;
+    setColumns(newColumnsCount);
+
+    // Generate new column names
+    const newColumnNames = ColumnNames(newColumnsCount);
+    setColumnName(newColumnNames);
+  };
+
+  const [AllTableName, setAllTableName] = useState("Untitled");
+
+  const handleAllTableNameChange = (event) => {
+    setAllTableName(event.target.value);
   };
 
   const columnNameInputs = columnName.map((name, index) => (
@@ -43,26 +59,47 @@ const Table = () => {
   ));
 
   return (
-    <div className="table-div">
+    <div className="everyTable">
       <input
+        id="allTheTableName"
         type="text"
-        id="table-name"
-        defaultValue={tableName}
-        onBlur={(event) => setTableName(event.target.value) }
+        defaultValue={AllTableName}
+        onBlur={handleAllTableNameChange}
         style={{
-          color: tableName === "Untitled" ? "grey" : "black",
-          border: "none",
-          outline: "none",
-          fontSize: "1.5vw",
-          fontWeight: "bold",
           backgroundColor: "inherit",
+          color: AllTableName === "Untitled" ? "grey" : "black",
+          border: "none",
+          maxWidth: "180px",
+          outline: "none",
+          fontSize: "24px",
+          fontWeight: "bold",
         }}
       />
-
-      <div className="whole-table" style={{ overflow: "auto" }}>
-        <div className="column-name">{columnNameInputs}</div>
+      <div className="table-space">
+        <div className="table-div">
+          <input
+            type="text"
+            id="table-name"
+            defaultValue={tableName}
+            onBlur={(event) => setTableName(event.target.value)}
+            style={{
+              color: tableName === "Untitled" ? "grey" : "black",
+              border: "none",
+              outline: "none",
+              fontSize: "1.5vw",
+              fontWeight: "bold",
+              backgroundColor: "inherit",
+            }}
+          />
+          <div className="whole-table" style={{ overflow: "auto" }}>
+            <div className="column-name">{columnNameInputs}</div>
+            <button className="Add-column" onClick={addColumns}>
+              +
+            </button>
+          </div>
+          <Rows columns={columns} />
+        </div>
       </div>
-        <Rows />
     </div>
   );
 };

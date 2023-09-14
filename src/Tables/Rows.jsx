@@ -1,16 +1,23 @@
+// Rows.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './Rows.css';
 
-function Rows() {
+function Rows({ columns }) { // Receive 'columns' as a prop
   const [RowsData, setRowsData] = useState([]);
   const [editingRow, setEditingRow] = useState(null);
   const [hoveredRow, setHoveredRow] = useState(null);
 
   // Function to add a new row
   const addRow = () => {
-    const newRow = Array(4).fill('');
+    const newRow = Array(columns).fill(''); // Use 'columns' prop here
     setRowsData([...RowsData, newRow]);
   };
+
+  const deleteRow = (rowIndex) => {
+    const updatedData = [...RowsData];
+    updatedData.splice(rowIndex, 1);
+    setRowsData(updatedData); 
+  }
 
   // Function to handle input changes
   const handleInputChange = (e, rowIndex, columnIndex) => {
@@ -29,11 +36,11 @@ function Rows() {
   // Initialize with two rows when the component mounts
   useEffect(() => {
     const initialRows = [
-      Array(4).fill(''), // First row
-      Array(4).fill(''), // Second row
+      Array(columns).fill(''), // Use 'columns' prop here
+      Array(columns).fill(''), // Use 'columns' prop here
     ];
     setRowsData(initialRows);
-  }, []);
+  }, [columns]); // Make sure to include 'columns' in the dependency array
 
   // Function to dynamically adjust textarea height
   const adjustTextareaHeight = (element) => {
@@ -71,9 +78,13 @@ function Rows() {
                       boxSizing: 'inherit',
                     }}
                   />
+                  
                 </td>
               ))}
+              <td><button onClick={() => deleteRow(rowIndex)}>X</button></td>
+              
             </tr>
+            
           ))}
         </tbody>
       </table>
