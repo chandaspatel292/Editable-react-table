@@ -61,7 +61,7 @@ const Table = () => {
   return (
     <div className="everyTable">
       <input
-        id="allTheTableName"
+        id="TableName"
         type="text"
         defaultValue={AllTableName}
         onBlur={handleAllTableNameChange}
@@ -92,10 +92,16 @@ const Table = () => {
             }}
           />
           <table className="whole-table" style={{ overflow: "auto" }}>
-            <thead className="column-name">{columnNameInputs}<td><button className="Add-column" onClick={addColumns}>
-              +
-            </button></td></thead>
-            
+            <thead className="column-name">
+              <tr>
+                {columnNameInputs}
+                <td>
+                  <button className="Add-column" onClick={addColumns}>
+                    +
+                  </button>
+                </td>
+              </tr>
+            </thead>
           </table>
           <Rows columns={columns} />
         </div>
