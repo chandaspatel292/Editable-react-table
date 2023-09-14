@@ -85,7 +85,7 @@ const Table = () => {
             id="table-name"
             defaultValue={tableName}
             onBlur={(event) => setTableName(event.target.value)}
-            styleRowsData={{
+            style={{
               color: tableName === "Untitled" ? "grey" : "black",
               border: "none",
               outline: "none",
