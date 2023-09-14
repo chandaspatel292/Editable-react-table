@@ -71,7 +71,7 @@ const Table = () => {
           border: "none",
           maxWidth: "180px",
           outline: "none",
-          fontSize: "24px",
+          fontSize: "32px",
           fontWeight: "bold",
         }}
       />

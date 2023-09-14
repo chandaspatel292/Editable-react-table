@@ -34,10 +34,10 @@ function Rows({ columns }) { // Receive 'columns' as a prop
   };
 
   // Initialize with two rows when the component mounts
-  useEffect(() => {
+  useEffect((rowIndex) => {
     const initialRows = [
-      Array(columns).fill(''), // Use 'columns' prop here
-      Array(columns).fill(''), // Use 'columns' prop here
+      Array(columns).fill(RowsData[rowIndex]), // Use 'columns' prop here
+      Array(columns).fill(RowsData[rowIndex]), // Use 'columns' prop here
     ];
     setRowsData(initialRows);
   }, [columns]); // Make sure to include 'columns' in the dependency array
