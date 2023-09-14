@@ -33,6 +33,14 @@ const Table = () => {
     setColumnName(newColumnNames);
   };
 
+  const deleteColumns = (columnIndex) => {
+    const afterDelete = [...columnName];
+    afterDelete.splice(columnIndex, 1);
+    setColumnName(afterDelete);
+    const newColumnsCount = columns - 1;
+    setColumns(newColumnsCount);
+  };
+
   const [AllTableName, setAllTableName] = useState("Untitled");
 
   const handleAllTableNameChange = (event) => {
@@ -40,7 +48,7 @@ const Table = () => {
   };
 
   const columnNameInputs = columnName.map((name, index) => (
-    <td key={index}>
+    <td key={name}>
       <input
         type="text"
         key={index}
@@ -57,7 +65,9 @@ const Table = () => {
           fontSize: "16px",
         }}
       />
+      <button className="column-delete" onClick={()=>deleteColumns(index)}>X</button>
     </td>
+    
   ));
   
 
