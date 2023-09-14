@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Rows.css';
 
 function Rows({ columns }) { // Receive 'columns' as a prop
-  const [RowsData, setRowsData] = useState([]);
+  
+  const [RowsData, setRowsData] = useState([Array(columns).fill("")]);
   const [editingRow, setEditingRow] = useState(null);
   const [hoveredRow, setHoveredRow] = useState(null);
 
@@ -17,6 +18,7 @@ function Rows({ columns }) { // Receive 'columns' as a prop
     const updatedData = [...RowsData];
     updatedData.splice(rowIndex, 1);
     setRowsData(updatedData); 
+    console.log(updatedData)
   }
 
   // Function to handle input changes
@@ -33,20 +35,18 @@ function Rows({ columns }) { // Receive 'columns' as a prop
     setEditingRow(null); // Clear editing row
   };
 
-  // Initialize with two rows when the component mounts
+
   useEffect((rowIndex) => {
-    const initialRows = [
-      Array(columns).fill(RowsData[rowIndex]), // Use 'columns' prop here
-      Array(columns).fill(RowsData[rowIndex]), // Use 'columns' prop here
-    ];
+    const initialRow = Array(columns).fill(RowsData[rowIndex]);
+    const initialRows = Array(Object.keys(RowsData).length).fill([...initialRow]);
     setRowsData(initialRows);
-  }, [columns]); // Make sure to include 'columns' in the dependency array
+  }, [columns]); 
 
   // Function to dynamically adjust textarea height
-  const adjustTextareaHeight = (element) => {
+  function adjustTextareaHeight(element) {
     element.style.height = 'auto';
     element.style.height = element.scrollHeight + 'px';
-  };
+  }
 
   return (
     <div>

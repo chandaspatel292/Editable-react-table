@@ -40,23 +40,26 @@ const Table = () => {
   };
 
   const columnNameInputs = columnName.map((name, index) => (
-    <td><input
-      type="text"
-      key={index}
-      className={`column-text ${
-        index === 0 ? "left-align" : index === columns - 1 ? "right-align" : "center-align"
-      }`}
-      defaultValue={name}
-      onBlur={(e) => handleBlur(e, index)}
-      style={{
-        color: "black",
-        margin: "0.5em",
-        border: "0",
-        backgroundColor: "inherit",
-        fontSize: "16px",
-      }}
-    /></td>
+    <td key={index}>
+      <input
+        type="text"
+        key={index}
+        className={`column-text ${
+          index === 0 ? "left-align" : index === columns - 1 ? "right-align" : "center-align"
+        }`}
+        defaultValue={name}
+        onBlur={(e) => handleBlur(e, index)}
+        style={{
+          color: "black",
+          margin: "0.5em",
+          border: "0",
+          backgroundColor: "inherit",
+          fontSize: "16px",
+        }}
+      />
+    </td>
   ));
+  
 
   return (
     <div className="everyTable">
@@ -82,7 +85,7 @@ const Table = () => {
             id="table-name"
             defaultValue={tableName}
             onBlur={(event) => setTableName(event.target.value)}
-            style={{
+            styleRowsData={{
               color: tableName === "Untitled" ? "grey" : "black",
               border: "none",
               outline: "none",
@@ -93,7 +96,7 @@ const Table = () => {
           />
           <table className="whole-table" style={{ overflow: "auto" }}>
             <thead className="column-name">
-              <tr>
+              <tr id="columns">
                 {columnNameInputs}
                 <td>
                   <button className="Add-column" onClick={addColumns}>
@@ -111,4 +114,3 @@ const Table = () => {
 };
 
 export default Table;
-export { ColumnNames };
