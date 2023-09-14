@@ -40,7 +40,7 @@ const Table = () => {
   };
 
   const columnNameInputs = columnName.map((name, index) => (
-    <input
+    <td><input
       type="text"
       key={index}
       className={`column-text ${
@@ -55,7 +55,7 @@ const Table = () => {
         backgroundColor: "inherit",
         fontSize: "16px",
       }}
-    />
+    /></td>
   ));
 
   return (
@@ -91,12 +91,12 @@ const Table = () => {
               backgroundColor: "inherit",
             }}
           />
-          <div className="whole-table" style={{ overflow: "auto" }}>
-            <div className="column-name">{columnNameInputs}</div>
-            <button className="Add-column" onClick={addColumns}>
+          <table className="whole-table" style={{ overflow: "auto" }}>
+            <thead className="column-name">{columnNameInputs}<td><button className="Add-column" onClick={addColumns}>
               +
-            </button>
-          </div>
+            </button></td></thead>
+            
+          </table>
           <Rows columns={columns} />
         </div>
       </div>
